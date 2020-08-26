@@ -3,6 +3,7 @@ package timer
 import (
 	"fmt"
 	"testing"
+	"time"
 )
 
 func TestTimer1(t *testing.T) {
@@ -14,10 +15,10 @@ func TestTimer1(t *testing.T) {
 		fmt.Println("no params task 2")
 	}
 
-	if err := AddTask(2000, 3, fn1); err != nil {
+	if err := AddTask(2*time.Second, 3, fn1); err != nil {
 		t.Errorf("add timer task failed.")
 	}
-	if err := AddTask(3000, 4, fn2); err != nil {
+	if err := AddTask(3*time.Second, 4, fn2); err != nil {
 		t.Errorf("add timer task failed.")
 	}
 	Wait()
@@ -32,10 +33,10 @@ func TestTimer2(t *testing.T) {
 		fmt.Println("no params task 4", param1, param2)
 	}
 
-	if err := AddTask(1000, 3, fn1, 100); err != nil {
+	if err := AddTask(1*time.Second, 3, fn1, 100); err != nil {
 		t.Errorf("add timer task failed.")
 	}
-	if err := AddTask(2000, 4, fn2, 100, 200); err != nil {
+	if err := AddTask(2*time.Second, 4, fn2, 100, 200); err != nil {
 		t.Errorf("add timer task failed.")
 	}
 	Wait()
@@ -50,10 +51,10 @@ func TestTimer3(t *testing.T) {
 		RemoveTask(fn1)
 	}
 
-	if err := AddTask(2000, 0, fn1, 100); err != nil {
+	if err := AddTask(2*time.Second, 0, fn1, 100); err != nil {
 		t.Errorf("add timer task failed.")
 	}
-	if err := AddTask(10000, 1, fn2); err != nil {
+	if err := AddTask(1*time.Second, 1, fn2); err != nil {
 		t.Errorf("add timer task failed.")
 	}
 	Wait()
@@ -68,10 +69,10 @@ func TestTimer4(t *testing.T) {
 		RemoveAll()
 	}
 
-	if err := AddTask(2000, 0, fn1, 100); err != nil {
+	if err := AddTask(2*time.Second, 0, fn1, 100); err != nil {
 		t.Errorf("add timer task failed.")
 	}
-	if err := AddTask(10000, 1, fn2); err != nil {
+	if err := AddTask(1*time.Second, 1, fn2); err != nil {
 		t.Errorf("add timer task failed.")
 	}
 	Wait()
