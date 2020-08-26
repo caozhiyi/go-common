@@ -1,4 +1,4 @@
-package millitimer
+package timer
 
 import (
 	"time"
